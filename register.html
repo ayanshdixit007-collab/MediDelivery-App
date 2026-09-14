@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - MediDelivery</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #f0f2f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .auth-card { border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; max-width: 900px; width: 100%; }
+        .bg-image { background: linear-gradient(135deg, #00b894, #55efc4); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; text-align: center; }
+        .bg-image i { font-size: 5rem; margin-bottom: 20px; }
+        .form-section { padding: 50px; background: white; }
+        .btn-register { background-color: #00b894; color: white; border-radius: 25px; padding: 12px; font-weight: bold; width: 100%; transition: 0.3s; border: none; font-size: 1.1rem; margin-top: 10px; }
+        .btn-register:hover { background-color: #009678; color: white; transform: translateY(-2px); }
+        .form-floating:focus-within label { color: #00b894; }
+        .form-control:focus { border-color: #00b894; box-shadow: 0 0 0 0.25rem rgba(0, 184, 148, 0.25); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card auth-card flex-row">
+            <!-- Left Side Branding -->
+            <div class="col-md-5 d-none d-md-flex bg-image">
+                <i class="fas fa-heartbeat"></i>
+                <h2 class="fw-bold mb-3">MediDelivery</h2>
+                <p>Join us today and get your healthcare essentials delivered in minutes.</p>
+            </div>
+            
+            <!-- Right Side Form -->
+            <div class="col-md-7 form-section">
+                <h3 class="fw-bold mb-4 text-secondary">Create an Account</h3>
+                
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="regUsername" placeholder="Username" required>
+                    <label for="regUsername"><i class="fas fa-user me-2 text-muted"></i>Username</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="regEmail" placeholder="name@example.com" required>
+                    <label for="regEmail"><i class="fas fa-envelope me-2 text-muted"></i>Email address</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="regMobile" placeholder="Mobile Number" required>
+                    <label for="regMobile"><i class="fas fa-phone me-2 text-muted"></i>Mobile Number</label>
+                </div>
+                
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control" id="regPassword" placeholder="Password" required>
+                    <label for="regPassword"><i class="fas fa-lock me-2 text-muted"></i>Password</label>
+                </div>
+
+                <button class="btn-register" onclick="handleRegister()">Register Now</button>
+                
+                <p class="text-center mt-4 text-muted">
+                    Already have an account? <a href="login.html" class="text-decoration-none fw-bold" style="color: #00b894;">Login here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleRegister() {
+            const username = document.getElementById('regUsername').value;
+            const email = document.getElementById('regEmail').value;
+            const mobile = document.getElementById('regMobile').value;
+            const password = document.getElementById('regPassword').value;
+
+            if(!username || !email || !mobile || !password) {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            const userdata = { username, email, mobile, password };
+            localStorage.setItem('registeruser', JSON.stringify(userdata)); // Data saved to local storage[cite: 26]
+            
+            alert('Registration successful! Please login.');
+            window.location.href = "login.html"; 
+        }
+    </script>
+</body>
+</html>
